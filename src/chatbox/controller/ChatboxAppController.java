@@ -21,14 +21,28 @@ public class ChatboxAppController
 
 	}
 
+	public ChatBox getGrandpaBot()
+	{
+		return grandpaBot;
+	}
+	
 	public void start()
 	{
+		String result = appView.displayDialog(startMessage);
+		while(!grandpaBot.quitChecker(result))
+		{
+			result = grandpaBot.processText(result);
+			result = appView.displayDialog(result);
+		}
+		quit();
 
 	}
-
+	/**
+	 * Quit method for ChatBox application.
+	 */
 	private void quit()
 	{
-		JOptionPane.showMessageDialog(null, "I quit!");
+		appView.displayMessage(endMessage);
 		System.exit(0);
 	}
 }
