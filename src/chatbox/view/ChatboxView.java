@@ -30,6 +30,10 @@ public class ChatboxView
 		output = JOptionPane.showInputDialog(null, baseController.getGrandpaBot().getName() + " says: " + input);
 		return output;
 	}
+	/**
+	 * Displays a certain message in the chatbox popup window.
+	 * @param input
+	 */
 	public void displayMessage(String input)
 	{
 		JOptionPane.showMessageDialog(null, baseController.getGrandpaBot().getName() + " says: " + input);

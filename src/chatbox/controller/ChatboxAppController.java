@@ -3,7 +3,11 @@ package chatbox.controller;
 import javax.swing.JOptionPane;
 import chatbox.view.ChatboxView;
 import chatbox.model.ChatBox;
-
+/**
+ * This is the controller for the ChatBox project.
+ * @author Kelsey Henrichsen 
+ * @version 1.2 10/16/14
+ */
 public class ChatboxAppController
 {
 	private ChatBox jessbot;
@@ -12,6 +16,9 @@ public class ChatboxAppController
 	private String startMessage;
 	private String endMessage;
 
+	/**
+	 * Builds the controller and instantiates the view and model as well as assigns starting values.
+	 */
 	public ChatboxAppController()
 	{
 		appView = new ChatboxView(this);
@@ -20,12 +27,17 @@ public class ChatboxAppController
 		endMessage = "All Done!";
 
 	}
-
+	/**
+	 * Returns the ChatBox.
+	 * @return the chatbox
+	 */
 	public ChatBox getGrandpaBot()
 	{
 		return grandpaBot;
 	}
-	
+	/**
+	 * Starts chatbox processing.
+	 */
 	public void start()
 	{
 		String result = appView.displayDialog(startMessage);
