@@ -1,6 +1,7 @@
 package chatbox.view;
 
 import javax.swing.JOptionPane;
+
 import chatbox.controller.ChatboxAppController;
 
 /**
@@ -38,5 +39,11 @@ public class ChatboxView
 	{
 		JOptionPane.showMessageDialog(null, baseController.getGrandpaBot().getName() + " says: " + input);
 		
+	}
+
+	public String displayChatboxConversations(String startMessage)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

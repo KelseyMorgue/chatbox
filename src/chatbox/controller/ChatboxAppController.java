@@ -1,6 +1,9 @@
 package chatbox.controller;
 
 import javax.swing.JOptionPane;
+
+import chatbox.view.ChatboxFrame;
+import chatbox.view.ChatboxPanel;
 import chatbox.view.ChatboxView;
 import chatbox.model.ChatBox;
 /**
@@ -16,20 +19,26 @@ public class ChatboxAppController
 	private String startMessage;
 	private String endMessage;
 
+	
 	/**
-	 * Builds the controller and instantiates the view and model as well as assigns starting values.
+	 * GUI frame for the application.
+	 */
+	private ChatboxFrame baseFrame;
+	
+	/**
+	 * Creates a ChatboxAppController and initializes the associated View and Model objects.
 	 */
 	public ChatboxAppController()
 	{
 		appView = new ChatboxView(this);
+		baseFrame = new ChatboxFrame(this);
 		grandpaBot = new ChatBox("Grandpa");
-		startMessage = "Lets Begin";
+		startMessage = "Welcome to the" + grandpaBot.getName() +" Chatbot, type in your name.";
 		endMessage = "All Done!";
-
 	}
 	/**
 	 * Returns the ChatBox.
-	 * @return the chatbox
+	 * @return the Chatbox
 	 */
 	public ChatBox getGrandpaBot()
 	{
@@ -40,14 +49,22 @@ public class ChatboxAppController
 	 */
 	public void start()
 	{
-		String result = appView.displayDialog(startMessage);
-		while(!grandpaBot.quitChecker(result))
-		{
-			result = grandpaBot.processText(result);
-			result = appView.displayDialog(result);
-		}
-		quit();
+		ChatboxPanel myAppPanel = (ChatboxPanel) baseFrame.getContentPane();
+		 myAppPanel.displayTextToUser(startMessage);
+		 
+//		while(!grandpaBot.quitChecker(message))
+//		{
+//			message = grandpaBot.processText(message);
+//			message = appView.displayDialog(message);
+//		}
+//		quit();
 
+	}
+	public String sendTextToChatBox(String userInput)
+	{
+		String respondText = "";
+		respondText = grandpaBot.processText(userInput);
+		return respondText;
 	}
 	/**
 	 * Quit method for ChatBox application.
@@ -56,5 +73,9 @@ public class ChatboxAppController
 	{
 		appView.displayMessage(endMessage);
 		System.exit(0);
+	}
+	public ChatboxFrame getBaseFrame()
+	{
+		return baseFrame;
 	}
 }
